@@ -13,7 +13,7 @@ const sizeMap = {
   sm: "text-2xl",
   md: "text-4xl",
   lg: "text-7xl md:text-8xl",
-  xl: "text-[18vw] md:text-[22vw] leading-none",
+  xl: "text-[15vw] md:text-[19vw] leading-none",
 };
 
 /**

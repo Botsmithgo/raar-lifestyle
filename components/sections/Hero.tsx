@@ -76,12 +76,12 @@ export default function Hero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 0.7, y: 0 }}
           transition={{ delay: 0.4, duration: 0.9 }}
-          className="overline mb-6 text-sand/70"
+          className="overline mb-14 md:mb-20 text-sand/70"
         >
           Luxury Lifestyle & Events Management
         </motion.p>
 
-        <MirrorWordmark size="xl" animated color="sand" className="mb-8" />
+        <MirrorWordmark size="xl" animated color="sand" className="mb-10" />
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
