@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { RevealLines } from "@/components/RevealText";
 import MagneticButton from "@/components/MagneticButton";
 
 export default function Contact() {
+  const t = useTranslations("contact");
   const [sent, setSent] = useState(false);
 
-  // Build a mailto: with the form contents. No backend needed for v1.
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
@@ -18,7 +19,9 @@ export default function Contact() {
     const interest = (fd.get("interest") as string) || "";
     const message = (fd.get("message") as string) || "";
 
-    const subject = encodeURIComponent(`RAAR enquiry — ${name}`);
+    const subject = encodeURIComponent(
+      t("form.mailSubject", { name })
+    );
     const body = encodeURIComponent(
       `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nInterest: ${interest}\n\n${message}`
     );
@@ -33,7 +36,6 @@ export default function Contact() {
       data-surface="dark"
       className="relative overflow-hidden bg-ink text-sand py-32 md:py-44"
     >
-      {/* Subtle animated gradient blob */}
       <motion.div
         aria-hidden
         initial={{ opacity: 0.15 }}
@@ -44,28 +46,33 @@ export default function Contact() {
 
       <div className="relative mx-auto grid max-w-[1560px] grid-cols-1 gap-16 px-6 md:grid-cols-12 md:px-10">
         <div className="md:col-span-5">
-          <p className="overline mb-8 text-sand/60">Get in Touch</p>
+          <p className="overline mb-8 text-sand/60">{t("eyebrow")}</p>
 
           <RevealLines
             className="display text-5xl md:text-7xl lg:text-8xl mb-10"
             lines={[
-              <>Every request</>,
-              <>is{" "}
-                <span className="display-italic text-rose">unique</span>.
-              </>,
-              <>So is</>,
-              <>our reply.</>,
+              <span key="l1">{t("headlineLine1")}</span>,
+              <span key="l2">
+                {t("headlineLine2Before")}
+                <span className="display-italic text-rose">
+                  {t("headlineLine2Accent")}
+                </span>
+                {t("headlineLine2After")}
+              </span>,
+              <span key="l3">{t("headlineLine3")}</span>,
+              <span key="l4">{t("headlineLine4")}</span>,
             ]}
           />
 
           <p className="mb-10 max-w-md text-sand/80 leading-relaxed">
-            Privacy and flexibility sit at the core of our philosophy. Tell us
-            about you — we&rsquo;ll tailor every detail.
+            {t("body")}
           </p>
 
           <ul className="space-y-4 text-sand/90">
             <li className="flex items-center gap-4">
-              <span className="overline w-24 text-sand/50">Call</span>
+              <span className="overline w-24 text-sand/50">
+                {t("labels.call")}
+              </span>
               <a
                 href="tel:+971504202558"
                 className="border-b border-sand/20 transition hover:border-sand"
@@ -74,7 +81,9 @@ export default function Contact() {
               </a>
             </li>
             <li className="flex items-center gap-4">
-              <span className="overline w-24 text-sand/50">WhatsApp</span>
+              <span className="overline w-24 text-sand/50">
+                {t("labels.whatsapp")}
+              </span>
               <a
                 href="https://wa.me/33648555506"
                 target="_blank"
@@ -85,7 +94,9 @@ export default function Contact() {
               </a>
             </li>
             <li className="flex items-center gap-4">
-              <span className="overline w-24 text-sand/50">Email</span>
+              <span className="overline w-24 text-sand/50">
+                {t("labels.email")}
+              </span>
               <a
                 href="mailto:Asmaah@protonmail.com"
                 className="border-b border-sand/20 transition hover:border-sand"
@@ -94,7 +105,9 @@ export default function Contact() {
               </a>
             </li>
             <li className="flex items-center gap-4">
-              <span className="overline w-24 text-sand/50">Instagram</span>
+              <span className="overline w-24 text-sand/50">
+                {t("labels.instagram")}
+              </span>
               <a
                 href="https://instagram.com/raarlifestyle"
                 target="_blank"
@@ -109,18 +122,20 @@ export default function Contact() {
 
         <div className="md:col-span-6 md:col-start-7">
           <form onSubmit={onSubmit} className="space-y-8">
-            <Field name="name" label="Your name" required />
+            <Field name="name" label={t("form.name")} required />
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-              <Field name="email" label="Email" type="email" required />
-              <Field name="phone" label="Phone" type="tel" />
+              <Field
+                name="email"
+                label={t("form.email")}
+                type="email"
+                required
+              />
+              <Field name="phone" label={t("form.phone")} type="tel" />
             </div>
-            <Field
-              name="interest"
-              label="What are you interested in? (Hotels, yacht, dining…)"
-            />
+            <Field name="interest" label={t("form.interest")} />
             <Field
               name="message"
-              label="Tell us more"
+              label={t("form.message")}
               as="textarea"
               rows={4}
             />
@@ -130,10 +145,10 @@ export default function Contact() {
                 type="submit"
                 className="rounded-full bg-sand px-8 py-4 text-xs font-medium uppercase tracking-[0.22em] text-ink transition hover:bg-bone"
               >
-                {sent ? "Opening your mail app…" : "Send enquiry"}
+                {sent ? t("form.submitting") : t("form.submit")}
               </MagneticButton>
               <span className="text-xs text-sand/50 max-w-[260px]">
-                Your details stay private. We reply within 24 hours.
+                {t("form.privacy")}
               </span>
             </div>
           </form>

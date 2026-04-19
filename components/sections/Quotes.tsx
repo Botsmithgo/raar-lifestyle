@@ -2,14 +2,11 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { useTranslations } from "next-intl";
 import { RevealLines } from "@/components/RevealText";
 
-/**
- * Centerpiece Michael Jordan quote. Fully legible — no horizontal marquee.
- * The motion is restrained: a slow parallax rise + word-reveal on scroll,
- * plus a subtle drifting oversized apostrophe in the background.
- */
 export default function Quotes() {
+  const t = useTranslations("quotes");
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -23,7 +20,6 @@ export default function Quotes() {
       ref={ref}
       className="relative overflow-hidden bg-bone py-32 md:py-48"
     >
-      {/* Oversized drifting quote mark */}
       <motion.span
         aria-hidden
         style={{ y: markY, rotate: markRotate }}
@@ -33,18 +29,20 @@ export default function Quotes() {
       </motion.span>
 
       <div className="relative mx-auto max-w-5xl px-6 text-center md:px-10">
-        <p className="overline mb-10 text-ink/60">Words to live by</p>
+        <p className="overline mb-10 text-ink/60">{t("eyebrow")}</p>
 
         <RevealLines
           className="display-italic text-ink text-balance text-3xl leading-[1.15] md:text-5xl lg:text-6xl"
           stagger={0.12}
           lines={[
-            <span key="l1">Some people want it to happen,</span>,
-            <span key="l2">some wish it could happen,</span>,
+            <span key="l1">{t("line1")}</span>,
+            <span key="l2">{t("line2")}</span>,
             <span key="l3">
-              others{" "}
-              <span className="display text-rose not-italic">make it</span>{" "}
-              happen.
+              {t("line3Before")}
+              <span className="display text-rose not-italic">
+                {t("line3Accent")}
+              </span>
+              {t("line3After")}
             </span>,
           ]}
         />
@@ -57,7 +55,7 @@ export default function Quotes() {
           className="mt-12 flex items-center justify-center gap-4 md:mt-16"
         >
           <span className="inline-block h-px w-10 bg-ink/30 md:w-16" />
-          <span className="overline text-ink/70">Michael Jordan</span>
+          <span className="overline text-ink/70">{t("author")}</span>
           <span className="inline-block h-px w-10 bg-ink/30 md:w-16" />
         </motion.div>
       </div>

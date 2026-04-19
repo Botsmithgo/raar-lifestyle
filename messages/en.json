@@ -1,0 +1,216 @@
+{
+  "nav": {
+    "services": "Services",
+    "experiences": "Experiences",
+    "founder": "Founder",
+    "contact": "Contact",
+    "becomeClient": "Become a client",
+    "menu": "Menu"
+  },
+  "hero": {
+    "eyebrowTop": "Dubai · Marrakech · Paris · Worldwide",
+    "est": "Est. 2021",
+    "category": "Luxury Lifestyle & Events Management",
+    "tagline": "Luxury meets convenience.",
+    "ctaPrimary": "Become a client",
+    "ctaSecondary": "Explore services",
+    "scroll": "Scroll"
+  },
+  "welcome": {
+    "eyebrow": "Welcome to RAAR",
+    "headlineLine1": "A tailored luxury",
+    "headlineLine2Before": "lifestyle & ",
+    "headlineLine2Accent": "events",
+    "headlineLine3": "management house.",
+    "body1": "From VIP hotel bookings and private dining to crafting the perfect itinerary for your next dream vacation — we handle a wide variety of requests and inquiries with quiet, obsessive care.",
+    "body2": "Whether you need professional planners for family leisure, corporate trips, once-in-a-lifetime events, exclusive yacht charters, distinguished staffing or that one-of-a-kind item for your wander-lusting shopping adventures — RAAR takes every minute stressor off your plate."
+  },
+  "manifesto": {
+    "eyebrow": "Why RAAR",
+    "headlineLine1": "We take great",
+    "headlineLine2Before": "pride in ",
+    "headlineLine2Accent": "authentic",
+    "headlineLine3": "& inspiring",
+    "headlineLine4": "experiences.",
+    "body1": "Our international concierge specialists cultivate long-lasting relationships with clients and partners around the world — always prioritising quality over quantity.",
+    "body2Before": "Allow our dedicated team and exclusive partners to take care of every painstaking detail with ",
+    "body2Accent": "luxurious style and personalised flare.",
+    "stat1": "Chauffeurs & security",
+    "stat2": "Countries covered",
+    "stat3": "Personal concierge",
+    "captionService": "01 / Private Dining",
+    "captionCity": "Dubai"
+  },
+  "services": {
+    "eyebrow": "The Full Spectrum",
+    "headlineLine1": "Ten worlds,",
+    "headlineLine2Before": "one ",
+    "headlineLine2Accent": "atelier",
+    "headlineSuffix": ".",
+    "intro": "Our full-spectrum services are designed to suit your unique, discerning specifications. Scroll to explore →",
+    "progress": "Services",
+    "enquire": "Enquire",
+    "list": {
+      "hotels-travel": {
+        "eyebrow": "The Where & How",
+        "title": "Hotels & Travels",
+        "description": "From private jets to the world's most storied resorts — we orchestrate every leg of your journey with obsessive care."
+      },
+      "real-estate": {
+        "eyebrow": "Luxury meets convenience",
+        "title": "Real Estate",
+        "description": "A villa in the South of France, a riad in Marrakech, or a pied-à-terre in Paris — our property network is global, confidential, and exacting."
+      },
+      "dining": {
+        "eyebrow": "Reservations & Rituals",
+        "title": "Dining & Reservations",
+        "description": "Chef's table access, private dining rooms, and tables where the booking closed months ago. Our network delivers."
+      },
+      "wellness": {
+        "eyebrow": "Body, Mind & Care",
+        "title": "Wellness",
+        "description": "Well-being tourism, holistic retreats, responsible food, and interior design for a considered life — curated with trusted partners worldwide."
+      },
+      "health": {
+        "eyebrow": "On-demand",
+        "title": "Health",
+        "description": "Discreet in-home medical visits, vitamin infusions, physiotherapists and doctors on call — at your service in record time."
+      },
+      "luxury-fashion": {
+        "eyebrow": "Wardrobe & Objects",
+        "title": "Luxury & Fashion",
+        "description": "Personal shoppers, style consultants, fine jewellery, elusive timepieces and one-of-a-kind artworks — sourced, reserved, delivered."
+      },
+      "art": {
+        "eyebrow": "Curation & Collecting",
+        "title": "Art",
+        "description": "Art advisory and consultancy with the most exclusive artists, galleries and fairs — plus private viewings your dealer can't arrange."
+      },
+      "beauty": {
+        "eyebrow": "Beauty & Make Up",
+        "title": "Beauty",
+        "description": "Make-up artists, coiffeurs, aesthetic doctors for botox or bespoke injectables — the best, at the pace your life demands."
+      },
+      "staffing": {
+        "eyebrow": "Household & Team",
+        "title": "Staffing",
+        "description": "Nannies, private chefs, chauffeurs, housekeepers, security — meticulously trained professionals available around the clock."
+      },
+      "polo-racing": {
+        "eyebrow": "Equestrian",
+        "title": "Polo & Racing",
+        "description": "With partner Capy Mourier, we curate Dubai's finest equestrian days — Meydan races, desert rides, and Al Habtoor polo matches."
+      }
+    }
+  },
+  "itinerary": {
+    "eyebrow": "An Itinerary — Spring 2026",
+    "headlineLine1": "48 Hours in",
+    "headlineLine2": "Marrakech.",
+    "subtitle": "A curated weekend, rendered in three moments. Each season brings a new journey.",
+    "moments": {
+      "arrival": {
+        "label": "Thursday, dusk",
+        "title": "The Arrival",
+        "line": "The riad. Candles. The Atlas on the skyline.",
+        "description": "A private transfer slips you past the ochre walls of the Medina into the quiet of a private riad. Tea on the rooftop as the muezzin calls; a candlelit tagine served in the inner courtyard by a chef who's cooked for three kings."
+      },
+      "desert": {
+        "label": "Friday, first light",
+        "title": "The Desert",
+        "line": "Breakfast at first light in the Agafay.",
+        "description": "A Defender at 5am, the Atlas pink on the horizon. Berber coffee and warm khobz at a hilltop camp of kilims and low copper tables. A horse ride through the stone desert — or the quiet of a private hot air balloon at sunrise."
+      },
+      "medina": {
+        "label": "Saturday, after dark",
+        "title": "The Medina",
+        "line": "A private gallery, then jazz long after midnight.",
+        "description": "Late lunch in the gardens of La Mamounia. A trusted guide opens the souks before the crowds; a private viewing at Voice Gallery of a painter you'll hear about next year. Dinner at Dar Yacout, then Le Salama until the music stops."
+      }
+    },
+    "outro": "— or tell us where you'd like to disappear to, and we'll build the rest.",
+    "cta": "Request your itinerary"
+  },
+  "founder": {
+    "eyebrow": "The Atelier",
+    "role": "Founder & CEO",
+    "location": "Dubai — Worldwide",
+    "headlineLine1": "Asmaa Hanine.",
+    "headlineLine2": "Curator of the extraordinary.",
+    "body1": "Founder and CEO of RAAR — a tailored luxury lifestyle & events management company based in Dubai, operating worldwide.",
+    "body2": "After graduating from a top-five business school in Paris in International Marketing and Business Development, Asmaa consulted with Ernst & Young and Capgemini, working on large-scale projects for top-tier clients.",
+    "body3Before": "Growing up interweaving Western and Eastern values, a passion arose within her for travel, culture and art. In that yearning, Asmaa has spent her time exploring top destinations abroad — curating events, fostering first-class relationships and scouting moments that leave her most discerning clients ",
+    "body3Accent": "absolutely breathless",
+    "body3Suffix": ".",
+    "cta": "Book a private call"
+  },
+  "quotes": {
+    "eyebrow": "Words to live by",
+    "line1": "Some people want it to happen,",
+    "line2": "some wish it could happen,",
+    "line3Before": "others ",
+    "line3Accent": "make it",
+    "line3After": " happen.",
+    "author": "Michael Jordan"
+  },
+  "destinations": {
+    "eyebrow": "Destinations",
+    "headlineBefore": "Places we'll ",
+    "headlineAccent": "take you",
+    "headlineSuffix": ".",
+    "side": "A world of trusted partners, private villas and residences — curated for the trips you'll tell stories about.",
+    "outro": "— and anywhere else you dream of —",
+    "list": {
+      "santorini": { "place": "Oia", "country": "Santorini, Greece" },
+      "positano": { "place": "Positano", "country": "Amalfi Coast, Italy" },
+      "maldives": { "place": "Rangali Island", "country": "Maldives" },
+      "capri": { "place": "Capri", "country": "Italy" },
+      "borabora": { "place": "Bora Bora", "country": "French Polynesia" },
+      "marrakech": { "place": "Marrakech", "country": "Morocco" },
+      "como": { "place": "Lake Como", "country": "Italy" },
+      "mykonos": { "place": "Mykonos", "country": "Greece" },
+      "dolomites": { "place": "Dolomites", "country": "Italy" },
+      "dubai": { "place": "Palm Jumeirah", "country": "Dubai, UAE" },
+      "mauritius": { "place": "Mauritius", "country": "Indian Ocean" },
+      "sttropez": { "place": "St. Tropez", "country": "French Riviera" }
+    }
+  },
+  "contact": {
+    "eyebrow": "Get in Touch",
+    "headlineLine1": "Every request",
+    "headlineLine2Before": "is ",
+    "headlineLine2Accent": "unique",
+    "headlineLine2After": ".",
+    "headlineLine3": "So is",
+    "headlineLine4": "our reply.",
+    "body": "Privacy and flexibility sit at the core of our philosophy. Tell us about you — we'll tailor every detail.",
+    "labels": {
+      "call": "Call",
+      "whatsapp": "WhatsApp",
+      "email": "Email",
+      "instagram": "Instagram"
+    },
+    "form": {
+      "name": "Your name",
+      "email": "Email",
+      "phone": "Phone",
+      "interest": "What are you interested in? (Hotels, yacht, dining…)",
+      "message": "Tell us more",
+      "submit": "Send enquiry",
+      "submitting": "Opening your mail app…",
+      "privacy": "Your details stay private. We reply within 24 hours.",
+      "mailSubject": "RAAR enquiry — {name}"
+    }
+  },
+  "footer": {
+    "tagline": "Luxury meets convenience.",
+    "description": "RAAR — a tailored luxury lifestyle & events management atelier. Dubai · Marrakech · Paris · worldwide.",
+    "copyright": "© {year} RAAR Lifestyle. All rights reserved.",
+    "craft": "Crafted with obsessive care."
+  },
+  "language": {
+    "en": "English",
+    "fr": "French",
+    "switchTo": "Switch language"
+  }
+}

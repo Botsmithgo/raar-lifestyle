@@ -3,10 +3,12 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import MirrorWordmark from "@/components/MirrorWordmark";
 import MagneticButton from "@/components/MagneticButton";
 
 export default function Hero() {
+  const t = useTranslations("hero");
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -55,7 +57,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.8, duration: 1 }}
         >
-          Dubai · Marrakech · Paris · Worldwide
+          {t("eyebrowTop")}
         </motion.span>
         <motion.span
           initial={{ opacity: 0, y: 10 }}
@@ -63,7 +65,7 @@ export default function Hero() {
           transition={{ delay: 1.9, duration: 1 }}
           className="hidden md:inline"
         >
-          Est. 2021
+          {t("est")}
         </motion.span>
       </div>
 
@@ -78,7 +80,7 @@ export default function Hero() {
           transition={{ delay: 0.4, duration: 0.9 }}
           className="overline mb-14 md:mb-20 text-sand/70"
         >
-          Luxury Lifestyle & Events Management
+          {t("category")}
         </motion.p>
 
         <MirrorWordmark size="xl" animated color="sand" className="mb-10" />
@@ -89,9 +91,7 @@ export default function Hero() {
           transition={{ delay: 1.4, duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="display-italic text-sand/90 mb-10 text-balance"
         >
-          <span className="text-2xl md:text-4xl">
-            Luxury meets convenience.
-          </span>
+          <span className="text-2xl md:text-4xl">{t("tagline")}</span>
         </motion.p>
 
         <motion.div
@@ -105,14 +105,14 @@ export default function Hero() {
             href="#contact"
             className="rounded-full bg-sand px-8 py-4 text-xs font-medium uppercase tracking-[0.22em] text-ink transition hover:bg-bone"
           >
-            Become a client
+            {t("ctaPrimary")}
           </MagneticButton>
           <MagneticButton
             as="a"
             href="#services"
             className="rounded-full border border-sand/40 px-8 py-4 text-xs font-medium uppercase tracking-[0.22em] text-sand transition hover:border-sand hover:bg-sand/10"
           >
-            Explore services
+            {t("ctaSecondary")}
           </MagneticButton>
         </motion.div>
       </motion.div>
@@ -124,7 +124,7 @@ export default function Hero() {
         transition={{ delay: 2.5, duration: 1 }}
         className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-center"
       >
-        <span className="overline text-sand/60">Scroll</span>
+        <span className="overline text-sand/60">{t("scroll")}</span>
         <div className="mx-auto mt-3 h-10 w-px bg-sand/40" />
       </motion.div>
     </section>

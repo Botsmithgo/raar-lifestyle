@@ -1,26 +1,31 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import MirrorWordmark from "./MirrorWordmark";
-
-const links = [
-  { label: "Services", href: "#services" },
-  { label: "Experiences", href: "#experiences" },
-  { label: "Founder", href: "#founder" },
-  { label: "Contact", href: "#contact" },
-];
+import LanguageToggle from "./LanguageToggle";
 
 export default function Nav() {
+  const t = useTranslations("nav");
   const [scrolled, setScrolled] = useState(false);
   const [onDark, setOnDark] = useState(true); // hero is dark
   const [open, setOpen] = useState(false);
+
+  const links = [
+    { key: "services", href: "#services" },
+    { key: "experiences", href: "#experiences" },
+    { key: "founder", href: "#founder" },
+    { key: "contact", href: "#contact" },
+  ] as const;
 
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 60);
       // flip contrast based on the section under the nav
       const y = window.scrollY + 40;
-      const darkRanges = document.querySelectorAll<HTMLElement>("[data-surface='dark']");
+      const darkRanges = document.querySelectorAll<HTMLElement>(
+        "[data-surface='dark']"
+      );
       let dark = false;
       darkRanges.forEach((el) => {
         const top = el.offsetTop;
@@ -60,12 +65,16 @@ export default function Nav() {
                 href={l.href}
                 className="overline transition-opacity hover:opacity-60"
               >
-                {l.label}
+                {t(l.key)}
               </a>
             ))}
           </nav>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-6">
+            <LanguageToggle
+              tone={onDark ? "light" : "dark"}
+              className="hidden md:inline-flex"
+            />
             <a
               href="#contact"
               className={`hidden rounded-full border px-5 py-2.5 text-xs font-medium uppercase tracking-[0.18em] transition md:inline-flex ${
@@ -74,11 +83,11 @@ export default function Nav() {
                   : "border-ink/30 hover:bg-ink hover:text-sand"
               }`}
             >
-              Become a client
+              {t("becomeClient")}
             </a>
             <button
               onClick={() => setOpen((v) => !v)}
-              aria-label="Menu"
+              aria-label={t("menu")}
               className="inline-flex h-10 w-10 items-center justify-center md:hidden"
             >
               <span className="relative block h-3 w-5">
@@ -109,7 +118,7 @@ export default function Nav() {
               onClick={() => setOpen(false)}
               className="font-serif text-4xl italic"
             >
-              {l.label}
+              {t(l.key)}
             </a>
           ))}
           <a
@@ -117,8 +126,11 @@ export default function Nav() {
             onClick={() => setOpen(false)}
             className="mt-6 rounded-full border border-sand/40 px-6 py-3 text-xs uppercase tracking-[0.2em]"
           >
-            Become a client
+            {t("becomeClient")}
           </a>
+          <div className="mt-6">
+            <LanguageToggle tone="light" />
+          </div>
         </div>
       </div>
     </>

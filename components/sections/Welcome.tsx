@@ -3,9 +3,11 @@
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { useTranslations } from "next-intl";
 import RevealText, { RevealLines } from "@/components/RevealText";
 
 export default function Welcome() {
+  const t = useTranslations("welcome");
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -37,17 +39,19 @@ export default function Welcome() {
 
         {/* Right — copy */}
         <div className="md:col-span-6 md:col-start-7 md:pt-12">
-          <p className="overline mb-8 text-ink/60">Welcome to RAAR</p>
+          <p className="overline mb-8 text-ink/60">{t("eyebrow")}</p>
 
           <RevealLines
             className="display text-4xl md:text-6xl lg:text-7xl mb-10"
             lines={[
-              <>A tailored luxury</>,
-              <>
-                lifestyle &{" "}
-                <span className="display-italic text-rose">events</span>
-              </>,
-              <>management house.</>,
+              <span key="l1">{t("headlineLine1")}</span>,
+              <span key="l2">
+                {t("headlineLine2Before")}
+                <span className="display-italic text-rose">
+                  {t("headlineLine2Accent")}
+                </span>
+              </span>,
+              <span key="l3">{t("headlineLine3")}</span>,
             ]}
           />
 
@@ -59,7 +63,7 @@ export default function Welcome() {
               className="block"
               delay={0.3}
             >
-              From VIP hotel bookings and private dining to crafting the perfect itinerary for your next dream vacation — we handle a wide variety of requests and inquiries with quiet, obsessive care.
+              {t("body1")}
             </RevealText>
             <RevealText
               as="p"
@@ -68,7 +72,7 @@ export default function Welcome() {
               className="block"
               delay={0.5}
             >
-              Whether you need professional planners for family leisure, corporate trips, once-in-a-lifetime events, exclusive yacht charters, distinguished staffing or that one-of-a-kind item for your wander-lusting shopping adventures — RAAR takes every minute stressor off your plate.
+              {t("body2")}
             </RevealText>
           </div>
         </div>
