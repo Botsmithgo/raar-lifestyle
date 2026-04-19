@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RAAR Lifestyle
 
-## Getting Started
+> Luxury meets convenience.
 
-First, run the development server:
+A cinematic, editorial rebuild of [raarlifestyle.com](https://raarlifestyle.com) — a tailored luxury lifestyle & events management house. Dubai · Marrakech · Paris · worldwide.
+
+## Stack
+
+- **Next.js 16** (App Router, Turbopack)
+- **React 19** + TypeScript
+- **Tailwind CSS v4** with custom brand tokens
+- **Framer Motion** for component motion
+- **Lenis** for smooth scroll
+- **GSAP** (available for advanced scroll choreography)
+- Fonts: **Fraunces** (editorial serif) + **Inter Tight** (sans)
+
+## Design language
+
+- **Dark cinematic hero** → cream editorial mid → dark contact footer
+- **Mirrored "RA | AR" wordmark** animated on load
+- **Horizontal pinned services strip** — ten verticals scroll sideways as you scroll down
+- Custom cursor, magnetic buttons, scroll-triggered text reveals
+- Signature equestrian experiences triptych (Meydan · Desert · Polo)
+- Parallax imagery and dual-direction quote marquees
+
+## Sections
+
+1. Hero (cinematic Ken Burns)
+2. Welcome / intro
+3. Manifesto ("Why RAAR")
+4. Services — horizontal pinned scroll
+5. Signature Experiences — Polo & Racing
+6. Founder — Asmaa Hanine
+7. Quotes marquee
+8. Destination image marquee
+9. Contact (mailto form)
+10. Footer
+
+## Develop
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev       # http://localhost:3000
+npm run build     # production build
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Notes
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Imagery uses remote Unsplash URLs with `images.unsplash.com` whitelisted in `next.config.ts`. `unoptimized: true` keeps the image loader from proxying.
+- The custom cursor auto-disables on touch / coarse-pointer devices.
+- `prefers-reduced-motion: reduce` short-circuits non-essential animation.
