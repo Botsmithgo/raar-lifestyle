@@ -18,7 +18,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "hero" });
   const title =
     locale === "fr"
-      ? "RAAR — Lifestyle de Luxe & Événementiel"
+      ? "RAAR — Lifestyle & Événements, sur mesure."
       : "RAAR — Luxury Lifestyle & Events Management";
   return {
     title,
