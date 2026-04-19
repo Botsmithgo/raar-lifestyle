@@ -17,7 +17,8 @@ const sizeMap = {
 };
 
 /**
- * The RAAR wordmark: "RA | AR" — where the second "AR" is horizontally mirrored.
+ * The RAAR wordmark: "RA | AR" — where the R of the right-hand "AR" is
+ * horizontally mirrored to echo the deck's palindromic mark.
  * When `animated`, the two halves start apart and slide together through the pipe.
  */
 export default function MirrorWordmark({
@@ -31,6 +32,21 @@ export default function MirrorWordmark({
 
   const sizeClass = sizeMap[size];
 
+  // The mirrored "R" — used on the right half so the wordmark reads "RA | AR"
+  // while preserving the deck's mirror aesthetic.
+  const MirroredAR = (
+    <>
+      A
+      <span
+        aria-hidden
+        className="inline-block"
+        style={{ transform: "scaleX(-1)" }}
+      >
+        R
+      </span>
+    </>
+  );
+
   if (!animated) {
     return (
       <span
@@ -39,9 +55,7 @@ export default function MirrorWordmark({
       >
         <span>RA</span>
         <span className="opacity-40 font-light">|</span>
-        <span style={{ transform: "scaleX(-1)" }} className="inline-block">
-          RA
-        </span>
+        <span className="inline-flex">{MirroredAR}</span>
       </span>
     );
   }
@@ -70,10 +84,9 @@ export default function MirrorWordmark({
         initial={{ x: "25vw", opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-        style={{ transform: "scaleX(-1)" }}
-        className="inline-block"
+        className="inline-flex"
       >
-        RA
+        {MirroredAR}
       </motion.span>
     </span>
   );
