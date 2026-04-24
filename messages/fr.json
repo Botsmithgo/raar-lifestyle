@@ -185,15 +185,12 @@
     "headlineLine4": "aussi.",
     "body": "Discrétion, souplesse — au cœur de notre maison. Parlez-nous de vous. Chaque détail sera pensé pour vous.",
     "labels": {
-      "call": "Téléphone",
-      "whatsapp": "WhatsApp",
       "email": "Email",
       "instagram": "Instagram"
     },
     "form": {
       "name": "Votre nom",
       "email": "Email",
-      "phone": "Téléphone",
       "interest": "Ce qui vous intéresse (hôtels, yacht, table…)",
       "message": "Dites-nous en plus",
       "submit": "Envoyer",

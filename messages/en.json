@@ -185,15 +185,12 @@
     "headlineLine4": "our reply.",
     "body": "Privacy and flexibility sit at the core of our philosophy. Tell us about you — we'll tailor every detail.",
     "labels": {
-      "call": "Call",
-      "whatsapp": "WhatsApp",
       "email": "Email",
       "instagram": "Instagram"
     },
     "form": {
       "name": "Your name",
       "email": "Email",
-      "phone": "Phone",
       "interest": "What are you interested in? (Hotels, yacht, dining…)",
       "message": "Tell us more",
       "submit": "Send enquiry",

@@ -15,7 +15,6 @@ export default function Contact() {
     const fd = new FormData(e.currentTarget);
     const name = (fd.get("name") as string) || "";
     const email = (fd.get("email") as string) || "";
-    const phone = (fd.get("phone") as string) || "";
     const interest = (fd.get("interest") as string) || "";
     const message = (fd.get("message") as string) || "";
 
@@ -23,10 +22,10 @@ export default function Contact() {
       t("form.mailSubject", { name })
     );
     const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nInterest: ${interest}\n\n${message}`
+      `Name: ${name}\nEmail: ${email}\nInterest: ${interest}\n\n${message}`
     );
 
-    window.location.href = `mailto:Asmaah@protonmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:asmaa@raarlifestyle.com?subject=${subject}&body=${body}`;
     setSent(true);
   };
 
@@ -71,37 +70,13 @@ export default function Contact() {
           <ul className="space-y-4 text-sand/90">
             <li className="flex items-center gap-4">
               <span className="overline w-24 text-sand/50">
-                {t("labels.call")}
-              </span>
-              <a
-                href="tel:+971504202558"
-                className="border-b border-sand/20 transition hover:border-sand"
-              >
-                +971 50 420 2558
-              </a>
-            </li>
-            <li className="flex items-center gap-4">
-              <span className="overline w-24 text-sand/50">
-                {t("labels.whatsapp")}
-              </span>
-              <a
-                href="https://wa.me/33648555506"
-                target="_blank"
-                rel="noreferrer"
-                className="border-b border-sand/20 transition hover:border-sand"
-              >
-                +33 6 48 55 55 06
-              </a>
-            </li>
-            <li className="flex items-center gap-4">
-              <span className="overline w-24 text-sand/50">
                 {t("labels.email")}
               </span>
               <a
-                href="mailto:Asmaah@protonmail.com"
+                href="mailto:asmaa@raarlifestyle.com"
                 className="border-b border-sand/20 transition hover:border-sand"
               >
-                Asmaah@protonmail.com
+                asmaa@raarlifestyle.com
               </a>
             </li>
             <li className="flex items-center gap-4">
@@ -123,15 +98,12 @@ export default function Contact() {
         <div className="md:col-span-6 md:col-start-7">
           <form onSubmit={onSubmit} className="space-y-8">
             <Field name="name" label={t("form.name")} required />
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-              <Field
-                name="email"
-                label={t("form.email")}
-                type="email"
-                required
-              />
-              <Field name="phone" label={t("form.phone")} type="tel" />
-            </div>
+            <Field
+              name="email"
+              label={t("form.email")}
+              type="email"
+              required
+            />
             <Field name="interest" label={t("form.interest")} />
             <Field
               name="message"
