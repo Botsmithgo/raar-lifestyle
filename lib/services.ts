@@ -44,12 +44,10 @@ export const itineraryMomentIds = ["arrival", "desert", "medina"] as const;
 export type ItineraryMomentId = (typeof itineraryMomentIds)[number];
 
 export const itineraryImages: Record<ItineraryMomentId, string> = {
-  arrival:
-    "https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?w=1400&q=85&auto=format&fit=crop",
+  arrival: "/images/arrival-riad.jpg",
   desert:
     "https://images.unsplash.com/photo-1473580044384-7ba9967e16a0?w=1400&q=85&auto=format&fit=crop",
-  medina:
-    "https://images.unsplash.com/photo-1553603227-2358aabe821e?w=1400&q=85&auto=format&fit=crop",
+  medina: "/images/medina-marrakech.jpg",
 };
 
 // Destination IDs map to messages under `destinations.list.<id>`.
