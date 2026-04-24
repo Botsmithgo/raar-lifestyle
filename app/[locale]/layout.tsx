@@ -68,11 +68,9 @@ export async function generateMetadata({
         ],
     alternates: {
       canonical: canonicalPath,
-      languages: {
-        en: "/",
-        fr: "/fr",
-        "x-default": "/",
-      },
+      // hreflang `<link>`s are rendered explicitly in the body (see layout)
+      // because Next 16's `alternates.languages` omits x-default and
+      // sometimes duplicates entries when used inside [locale] segments.
     },
     robots: {
       index: true,
@@ -130,6 +128,13 @@ export default async function LocaleLayout({
       className={`${fraunces.variable} ${interTight.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-sand text-ink grain">
+        {/* hreflang — Next 16's `alternates.languages` in Metadata doesn't
+            emit <link> tags when the app uses a [locale] segment, so we
+            render them explicitly here. Next hoists <link>s from server
+            component bodies into <head>. */}
+        <link rel="alternate" hrefLang="en" href={`${SITE_URL}/`} />
+        <link rel="alternate" hrefLang="fr" href={`${SITE_URL}/fr`} />
+        <link rel="alternate" hrefLang="x-default" href={`${SITE_URL}/`} />
         <StructuredData locale={locale as "en" | "fr"} />
         <NextIntlClientProvider>
           <CustomCursor />
