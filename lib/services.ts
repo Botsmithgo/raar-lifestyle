@@ -58,7 +58,7 @@ export const destinationIds = [
   "capri",
   "borabora",
   "marrakech",
-  "como",
+  "cappadocia",
   "mykonos",
   "dolomites",
   "dubai",
@@ -74,13 +74,13 @@ export const destinationImages: Record<DestinationId, string> = {
     "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1200&q=85&auto=format&fit=crop",
   maldives:
     "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=1200&q=85&auto=format&fit=crop",
-  capri: "/images/capri.jpg",
+  capri:
+    "https://images.unsplash.com/photo-1555992336-03a23c7b20ee?w=1200&q=85&auto=format&fit=crop",
   borabora:
     "https://images.unsplash.com/photo-1540202404-a2f29016b523?w=1200&q=85&auto=format&fit=crop",
   marrakech:
     "https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?w=1200&q=85&auto=format&fit=crop",
-  como:
-    "https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=1200&q=85&auto=format&fit=crop",
+  cappadocia: "/images/cappadocia.jpg",
   mykonos:
     "https://images.unsplash.com/photo-1601581875039-e899893d520c?w=1200&q=85&auto=format&fit=crop",
   dolomites:

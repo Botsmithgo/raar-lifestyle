@@ -1,0 +1,93 @@
+- application [ref=e2]:
+  - generic:
+    - generic [ref=e3]:
+      - generic [ref=e4]: Séminaire professionnel·Les rendez-vous de la RSE
+      - separator [ref=e5]
+      - generic [ref=e6]: Séminaire · 2026
+      - heading "La RSE, une ambition partagée" [level=1] [ref=e7]:
+        - text: La RSE,
+        - text: une ambition partagée
+      - paragraph [ref=e8]: pour des PME plus résilientes et performantes
+      - paragraph [ref=e9]: Dans quelle mesure la RSE est-elle devenue une condition de compétitivité ?
+      - generic [ref=e10]:
+        - img "Maroc PME" [ref=e11]
+        - img "Embajada de España · AECID" [ref=e12]
+        - img "CGEM" [ref=e13]
+        - img "AMITH" [ref=e14]
+        - img "Fenagri" [ref=e15]
+    - generic:
+      - generic:
+        - generic: Séminaire · 2026
+        - heading [level=1]: RSE & Labels
+        - paragraph: Guide pratique pour les PME marocaines
+        - generic: Textile · Agriculture
+        - paragraph: Comprendre et mettre en œuvre une démarche RSE à travers les labels de référence.
+    - generic:
+      - generic:
+        - generic: Sommaire
+        - heading [level=1]: Votre parcours en 3 parties
+        - generic:
+          - generic:
+            - generic: "01"
+            - heading [level=3]: Comprendre la RSE
+            - list:
+              - listitem:
+                - generic: Qu'est-ce que la RSE ?
+                - generic: "04"
+              - listitem:
+                - generic: Les parties prenantes
+                - generic: "05"
+              - listitem:
+                - generic: RSE, Développement Durable & ESG
+                - generic: "06"
+              - listitem:
+                - generic: Réputation & ambassadeurs
+                - generic: "07"
+              - listitem:
+                - generic: Plan de gestion · ISO 26000
+                - generic: "08"
+          - generic:
+            - generic: "02"
+            - heading [level=3]: Les 4 labels de référence
+            - list:
+              - listitem:
+                - generic: BSCI — amfori
+                - generic: "10"
+              - listitem:
+                - generic: Fibre Citoyenne
+                - generic: "11"
+              - listitem:
+                - generic: Label RSE CGEM
+                - generic: "12"
+              - listitem:
+                - generic: PME Responsable
+                - generic: "13"
+              - listitem:
+                - generic: Synthèse & notation ESG
+                - generic: "14"
+              - listitem:
+                - generic: Parcours de certification
+                - generic: "16"
+          - generic:
+            - generic: "03"
+            - heading [level=3]: Passer à l'action
+            - list:
+              - listitem:
+                - generic: Diagnostic ESG
+                - generic: "18"
+              - listitem:
+                - generic: Matrice de matérialité
+                - generic: "19"
+              - listitem:
+                - generic: Plan d'action 30/60/90
+                - generic: "20"
+              - listitem:
+                - generic: Checklists d'audit
+                - generic: "21"
+              - listitem:
+                - generic: Glossaire & notes
+                - generic: "24"
+  - link "1 / 30" [ref=e38] [cursor=pointer]:
+    - /url: "#/"
+  - text: Speaker notes
+  - generic [ref=e22]: Séminaire professionnel · Les rendez-vous de la RSE Séminaire · 2026 La RSE, une ambition partagée pour des PME plus résilientes et performantes Dans quelle mesure la RSE est-elle devenue une condition de compétitivité ?
