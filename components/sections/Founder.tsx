@@ -28,7 +28,7 @@ export default function Founder() {
             className="relative aspect-[3/4] overflow-hidden rounded-sm will-change-transform"
           >
             <Image
-              src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=1200&q=85&auto=format&fit=crop"
+              src="/images/founder-asmaa.jpg"
               alt="Asmaa Hanine, founder of RAAR"
               fill
               className="object-cover"
