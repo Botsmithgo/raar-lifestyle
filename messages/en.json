@@ -4,7 +4,7 @@
     "experiences": "Experiences",
     "founder": "Founder",
     "contact": "Contact",
-    "becomeClient": "Become a client",
+    "becomeClient": "Enquire",
     "menu": "Menu"
   },
   "hero": {
@@ -12,7 +12,7 @@
     "est": "Est. 2021",
     "category": "Luxury Lifestyle & Events Management",
     "tagline": "Luxury meets convenience.",
-    "ctaPrimary": "Become a client",
+    "ctaPrimary": "Enquire",
     "ctaSecondary": "Explore services",
     "scroll": "Scroll"
   },
