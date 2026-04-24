@@ -74,8 +74,7 @@ export const destinationImages: Record<DestinationId, string> = {
     "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1200&q=85&auto=format&fit=crop",
   maldives:
     "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=1200&q=85&auto=format&fit=crop",
-  capri:
-    "https://images.unsplash.com/photo-1555992336-03a23c7b20ee?w=1200&q=85&auto=format&fit=crop",
+  capri: "/images/capri.jpg",
   borabora:
     "https://images.unsplash.com/photo-1540202404-a2f29016b523?w=1200&q=85&auto=format&fit=crop",
   marrakech:
