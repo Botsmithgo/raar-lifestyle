@@ -32,6 +32,7 @@ export default function Quotes() {
         <p className="overline mb-10 text-ink/60">{t("eyebrow")}</p>
 
         <RevealLines
+          as="blockquote"
           className="display-italic text-ink text-balance text-3xl leading-[1.15] md:text-5xl lg:text-6xl"
           stagger={0.12}
           lines={[

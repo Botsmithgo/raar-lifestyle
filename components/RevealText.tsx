@@ -57,6 +57,7 @@ type RevealLinesProps = {
   className?: string;
   delay?: number;
   stagger?: number;
+  as?: ElementType;
 };
 
 export function RevealLines({
@@ -64,12 +65,13 @@ export function RevealLines({
   className = "",
   delay = 0,
   stagger = 0.08,
+  as: Tag = "div",
 }: RevealLinesProps) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLElement | null>(null);
   const inView = useInView(ref, { once: true, margin: "-10% 0px -10% 0px" });
 
   return (
-    <div ref={ref} className={className}>
+    <Tag ref={ref} className={className}>
       {lines.map((line, i) => (
         <span key={i} className="block overflow-hidden leading-[1.05]">
           <motion.span
@@ -86,6 +88,6 @@ export function RevealLines({
           </motion.span>
         </span>
       ))}
-    </div>
+    </Tag>
   );
 }

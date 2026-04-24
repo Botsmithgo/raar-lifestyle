@@ -85,14 +85,15 @@ export default function Hero() {
 
         <MirrorWordmark size="xl" animated color="sand" className="mb-10" />
 
-        <motion.p
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.4, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="display-italic text-sand/90 mb-10 text-balance"
+          className="display-italic text-sand/90 mb-10 text-balance text-2xl md:text-4xl font-normal"
         >
-          <span className="text-2xl md:text-4xl">{t("tagline")}</span>
-        </motion.p>
+          <span className="sr-only">RAAR Lifestyle — </span>
+          {t("tagline")}
+        </motion.h1>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

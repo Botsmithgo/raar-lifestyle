@@ -48,7 +48,8 @@ export default function Contact() {
           <p className="overline mb-8 text-sand/60">{t("eyebrow")}</p>
 
           <RevealLines
-            className="display text-5xl md:text-7xl lg:text-8xl mb-10"
+            as="h2"
+            className="display text-5xl md:text-7xl lg:text-8xl mb-10 font-normal"
             lines={[
               <span key="l1">{t("headlineLine1")}</span>,
               <span key="l2">

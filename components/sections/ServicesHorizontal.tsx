@@ -33,7 +33,8 @@ export default function ServicesHorizontal() {
           <div className="relative flex h-full w-screen shrink-0 flex-col justify-end px-10 pb-20 md:px-24 md:pb-28">
             <p className="overline mb-6 text-ink/60">{t("eyebrow")}</p>
             <RevealLines
-              className="display text-5xl md:text-7xl lg:text-8xl max-w-4xl"
+              as="h2"
+              className="display text-5xl md:text-7xl lg:text-8xl max-w-4xl font-normal"
               lines={[
                 <span key="l1">{t("headlineLine1")}</span>,
                 <span key="l2">

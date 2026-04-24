@@ -20,7 +20,8 @@ export default function SignatureExperiences() {
           <div>
             <p className="overline mb-6 text-sand/60">{t("eyebrow")}</p>
             <RevealLines
-              className="display text-5xl md:text-7xl lg:text-8xl"
+              as="h2"
+              className="display text-5xl md:text-7xl lg:text-8xl font-normal"
               lines={[
                 <span key="l1">{t("headlineLine1")}</span>,
                 <span key="l2" className="display-italic text-rose">

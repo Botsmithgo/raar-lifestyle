@@ -45,7 +45,8 @@ export default function Founder() {
           <p className="overline mb-8 text-ink/60">{t("eyebrow")}</p>
 
           <RevealLines
-            className="display text-4xl md:text-6xl lg:text-7xl mb-10"
+            as="h2"
+            className="display text-4xl md:text-6xl lg:text-7xl mb-10 font-normal"
             lines={[
               <span key="l1">{t("headlineLine1")}</span>,
               <span key="l2" className="display-italic text-rose">
