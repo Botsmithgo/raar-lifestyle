@@ -36,27 +36,36 @@ This file is a **reusable playbook** for high-end concierge / luxury brand sites
 brand/
 ├── app/
 │   ├── [locale]/
-│   │   ├── layout.tsx          # fonts, cursor, smooth scroll, nav, NextIntlClientProvider
-│   │   └── page.tsx            # composes all sections
+│   │   ├── layout.tsx          # fonts, cursor, smooth scroll, nav, provider, metadata, hreflang <link>s, Analytics
+│   │   ├── page.tsx            # composes all sections
+│   │   ├── opengraph-image.tsx # per-locale 1200×630 branded OG card (ImageResponse)
+│   │   └── twitter-image.tsx   # re-exports the OG
+│   ├── sitemap.ts              # /, /fr with xhtml:link alternates
+│   ├── robots.ts               # allow-all incl. AI bots explicitly
+│   ├── manifest.ts             # PWA manifest
+│   ├── icon.tsx                # 32×32 R monogram (ImageResponse)
+│   ├── apple-icon.tsx          # 180×180 R monogram
+│   ├── favicon.ico             # legacy fallback
 │   └── globals.css             # tokens + tailwind layers + keyframes
 ├── components/
 │   ├── Nav.tsx                 # sticky, surface-aware (dark/light auto)
 │   ├── SmoothScroll.tsx        # Lenis wrapper
 │   ├── CustomCursor.tsx        # ring + dot, disables on touch
 │   ├── MagneticButton.tsx      # pulls toward cursor
-│   ├── RevealText.tsx          # word/line staggered scroll reveal
+│   ├── RevealText.tsx          # word/line staggered scroll reveal (accepts `as` prop)
 │   ├── MirrorWordmark.tsx      # the animated logo mark
 │   ├── LanguageToggle.tsx      # 🇬🇧/🇫🇷 switcher
+│   ├── StructuredData.tsx      # JSON-LD @graph (Organization, Person, WebSite, Service)
 │   └── sections/
-│       ├── Hero.tsx
-│       ├── Welcome.tsx
-│       ├── Manifesto.tsx
-│       ├── ServicesHorizontal.tsx      # pinned horizontal scroll — signature
-│       ├── SignatureExperiences.tsx    # rotating seasonal itinerary
-│       ├── Founder.tsx
-│       ├── Quotes.tsx                  # single centerpiece quote
-│       ├── Marquee.tsx                 # destination carousel
-│       ├── Contact.tsx                 # mailto form + contact rail
+│       ├── Hero.tsx            # contains the one <h1> (tagline)
+│       ├── Welcome.tsx         # <h2>
+│       ├── Manifesto.tsx       # <h2>
+│       ├── ServicesHorizontal.tsx      # pinned horizontal scroll — signature. <h2>
+│       ├── SignatureExperiences.tsx    # rotating seasonal itinerary. <h2>
+│       ├── Founder.tsx         # <h2>
+│       ├── Quotes.tsx          # single centerpiece quote (as <blockquote>)
+│       ├── Marquee.tsx         # destination carousel. <h2>
+│       ├── Contact.tsx         # mailto form + contact rail. <h2>
 │       └── Footer.tsx
 ├── i18n/
 │   ├── routing.ts              # locales, defaultLocale, localePrefix: 'as-needed'
@@ -68,9 +77,11 @@ brand/
 ├── messages/
 │   ├── en.json                 # full source of truth for English copy
 │   └── fr.json                 # hand-crafted French (not literal)
-├── middleware.ts               # next-intl middleware (locale detection + rewrite)
+├── middleware.ts               # next-intl middleware + file-convention route exemptions
 ├── next.config.ts              # next-intl plugin + image config
 └── public/
+    ├── images/                 # client-supplied imagery (founder, itinerary moments, etc.)
+    └── llms.txt                # brand brief for LLM crawlers
 ```
 
 **Rule of thumb:** every piece of user-facing text lives in `messages/*.json`. Components import translations via `useTranslations(namespace)`. The only things in `lib/services.ts` are IDs + image URLs (locale-agnostic data).
@@ -214,6 +225,7 @@ Vercel project: `raar-lifestyle` under `botsmithgos-projects`. Alias: `raar-life
 5. Replace all copy in `messages/en.json` + `messages/fr.json`
 6. Swap hero video/image, service images, itinerary images, destination images in `lib/services.ts` and section files
 7. Decide: same 10-service structure, or different? Same signature section (rotating itinerary), or different pattern? (The horizontal pinned scroll + italic rose accent + mirror wordmark moves are reusable — but the brand should feel distinct. Change at least the palette, fonts, and one signature moment.)
+8. Run the SEO swap — see §10 for the file-by-file checklist (`SITE_URL`, org/person/founder fields, OG tokens, etc.).
 
 ---
 
@@ -224,10 +236,81 @@ Vercel project: `raar-lifestyle` under `botsmithgos-projects`. Alias: `raar-life
 - **`react/jsx-key` in RevealLines arrays**: each JSX node passed into the `lines={[…]}` array needs an explicit `key="l1"` etc. Fragments (`<>…</>`) don't trigger the rule but also can't take keys.
 - **Hero eyebrow crowding the wordmark pipe**: on tall headlines, the `|` reaches into the eyebrow space. Fix with `mb-14 md:mb-20` on the eyebrow + dial wordmark `xl` size down (we use `text-[15vw] md:text-[19vw]`).
 - **Next.js 16 `middleware.ts` deprecation warning**: it works but the new convention is `proxy.ts`. Safe to ignore until next-intl officially migrates.
+- **Satori (`next/og`) does NOT accept WOFF2.** When loading Google Fonts inside `ImageResponse`, do NOT send a modern `User-Agent` header — Google returns `.woff2` and Satori throws `Unsupported OpenType signature wOF2`. Omit the header entirely; Google's default response is a direct `.ttf` URL that Satori can parse. See [`opengraph-image.tsx`](./app/[locale]/opengraph-image.tsx) for the working pattern.
+- **Next 16's `alternates.languages` doesn't emit hreflang `<link>` tags reliably** when the app uses a `[locale]` dynamic segment — x-default gets dropped, and some runs duplicate en/fr. Render them explicitly in the layout body as `<link rel="alternate" hrefLang="…" href="…" />` (Next hoists server-component `<link>`s into `<head>`). React will serialize the attribute as `hrefLang` (camelCase), which HTML parsers are case-insensitive about — Google, Bing, etc. all accept it.
+- **next-intl middleware redirects `/en/*` → `/*`** with `localePrefix: 'as-needed'`. That normally is what you want, but it breaks file-based metadata routes under `app/[locale]/` (e.g. `/en/opengraph-image` would 307 to `/opengraph-image` which 404s). Solution: extend the middleware matcher to skip any path containing `/opengraph-image`, `/twitter-image`, `/icon`, `/apple-icon` — see [`middleware.ts`](./middleware.ts).
+- **Wix domains: DNS change alone isn't enough.** A domain can still be "assigned" to a Wix site at the platform level; Wix's CDN keeps serving the old Coming Soon page (or an "unclaimed domain" page) even after DNS points elsewhere. The fix is `Wix → Domains → [domain] → ⋯ → Unassign from this site`. Don't click "Try Again" on the "Your domain is set to point away from Wix" banner — that resets DNS back to Wix.
+- **Local DNS cache vs global DNS.** After DNS changes, `dig @1.1.1.1` can return the new records while your local resolver (ISP + VPN + OS) still returns the old ones. Always verify via mobile data before assuming the site isn't live — and test with `curl --resolve host:443:NEW_IP https://host` to prove the origin is serving correctly.
 
 ---
 
-## 10. North stars
+## 10. SEO + AI-search scaffolding
+
+The site's SEO pass assumes the three user decisions that were made for RAAR and are reasonable defaults for any luxury brand launch:
+
+1. **AI crawlers: allow all.** Discovery upside is pure for a new brand nobody's heard of yet. `robots.ts` explicitly allows GPTBot, ClaudeBot, PerplexityBot, CCBot, Google-Extended, Applebot-Extended, etc. — wildcards alone aren't always honoured by UAs that special-case themselves.
+2. **OG image: branded card via `ImageResponse`.** Dark ink bg + giant wordmark + italic-rose tagline, per-locale. Not a hero photo (no brand identity), not the founder portrait (too LinkedIn).
+3. **Analytics: Vercel Analytics + Speed Insights only.** Free on Pro, zero-config, privacy-friendly, no cookie banner needed. GA4 layered on later if conversion funnels are needed.
+
+### What lives where
+
+| Concern | File | Output URL |
+|---|---|---|
+| Sitemap with hreflang alternates | [`app/sitemap.ts`](./app/sitemap.ts) | `/sitemap.xml` |
+| Robots with allow-all AI policy | [`app/robots.ts`](./app/robots.ts) | `/robots.txt` |
+| PWA manifest | [`app/manifest.ts`](./app/manifest.ts) | `/manifest.webmanifest` |
+| Browser icon | [`app/icon.tsx`](./app/icon.tsx) | `/icon` |
+| Apple touch icon | [`app/apple-icon.tsx`](./app/apple-icon.tsx) | `/apple-icon` |
+| Per-locale OG image | [`app/[locale]/opengraph-image.tsx`](./app/[locale]/opengraph-image.tsx) | `/en/opengraph-image`, `/fr/opengraph-image` |
+| Per-locale Twitter card | [`app/[locale]/twitter-image.tsx`](./app/[locale]/twitter-image.tsx) | `/en/twitter-image`, `/fr/twitter-image` |
+| LLM crawler brief | `public/llms.txt` | `/llms.txt` |
+| JSON-LD @graph | [`components/StructuredData.tsx`](./components/StructuredData.tsx) | inline `<script>` in `<head>` |
+| Metadata API (titles, canonical, OG, Twitter, robots, …) | [`app/[locale]/layout.tsx#generateMetadata`](./app/[locale]/layout.tsx) | `<head>` tags |
+| Hreflang `<link>`s (rendered manually — Next quirk) | [`app/[locale]/layout.tsx`](./app/[locale]/layout.tsx) `<body>` | `<head>` tags (hoisted) |
+
+### Heading hierarchy contract
+
+Exactly **one `<h1>`** on the page (the Hero tagline, prefixed with `sr-only` brand name for bots). Every major section gets one `<h2>`. `RevealLines` accepts an `as` prop (default `"div"`) so headlines keep their motion treatment while emitting real heading tags. The Quotes section uses `as="blockquote"` — semantically correct and Google gives weight to blockquoted content. `font-normal` is applied to every promoted h1/h2 because the browser-default bold fights `display`/`display-italic`.
+
+### JSON-LD graph
+
+The `StructuredData` component emits a single `<script type="application/ld+json">` with a `@graph` containing:
+- **Organization** — name, url, logo (→ `/apple-icon`), description, foundingDate, founder `@id` ref, areaServed, sameAs (Instagram), contactPoint (email + languages).
+- **Person** — founder bio with localized jobTitle.
+- **WebSite** — with `inLanguage`.
+- **Service** — single summary covering the 10 verticals, four `serviceType` values.
+
+All four cross-reference via `@id` (`#organization`, `#founder`, `#website`, `#service`) so Google treats them as one connected graph.
+
+### Starting SEO for a new brand using this template
+
+1. In `app/sitemap.ts`, `app/robots.ts`, `app/manifest.ts`, `public/llms.txt`, `components/StructuredData.tsx`, and `app/[locale]/opengraph-image.tsx`: swap `SITE_URL`, brand name, descriptions, founder name, Instagram handle, contact email, and the 10-service summary. Search for `raarlifestyle.com` and `RAAR` to find every reference.
+2. Set brand tokens in the OG image file to match `globals.css` (ink, sand, rose, gold).
+3. In `app/[locale]/layout.tsx#generateMetadata`, update localized titles, descriptions, keywords, and applicationName.
+4. If the new brand isn't Dubai-based, update the `organization.areaServed` array in `StructuredData.tsx` and the `applicable regions` in robots.
+5. Confirm `middleware.ts` still has the file-convention route exclusions — copy the matcher as-is.
+6. Deploy. Run the verification checks below.
+
+### Verification checklist (post-deploy)
+
+```bash
+SITE=https://www.<brand>.com
+for path in /sitemap.xml /robots.txt /llms.txt /manifest.webmanifest /icon /apple-icon /en/opengraph-image /fr/opengraph-image; do
+  printf "%-30s " "$path"; curl -sI "$SITE$path" | head -1
+done
+
+# Head signals
+curl -s "$SITE/" | grep -oiE '(rel="alternate" [^>]*hreflang[^>]*>|rel="canonical"[^>]*>|og:image[^>]*|application/ld\+json)' | sort -u
+
+# Heading audit
+curl -s "$SITE/" | grep -oE '<h[1-2] [^>]{0,60}'
+```
+
+Then: Facebook Sharing Debugger, LinkedIn Post Inspector, Google Rich Results Test, Schema.org Validator, Lighthouse (mobile, SEO category → target 100). Submit sitemap to Google Search Console.
+
+---
+
+## 11. North stars
 
 - If a client looks at it for 3 seconds and says *"this feels expensive"* — it's working.
 - If a client reads one sentence and thinks *"they get me"* — the copy is working.
